@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Post List</title>
+    </head>
+    <p>
+<body> 
+        {% for thePost in posts %}
+        <article>
+            <time>published {{thePost.published_date}}</time>
+            <h3><a href="">{{thePost.title}}</a></h3>
+            <p>{{thePost.text|linebreaksbr }}</p>
+        </article>
+        {% endfor %}
+</body>
+</html>
