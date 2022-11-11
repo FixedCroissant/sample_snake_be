@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Post List</title>
-    </head>
-    <p>
-<body> 
-        {% for thePost in posts %}
+{% extends 'blog/base.html' %}
+
+
+{% load static %}
+{% block content %}
+{% for thePost in posts %}
         <article>
             <time>published {{thePost.published_date}}</time>
-            <h3><a href="">{{thePost.title}}</a></h3>
+            <h3><a href="{% url 'post_detail' pk=thePost.pk %}">{{ thePost.title }}</a></h3>
             <p>{{thePost.text|linebreaksbr }}</p>
+            <img src="{% static 'blog/example.jpg' %}" alt="My cat image">
         </article>
-        {% endfor %}
-</body>
-</html>
+{% endfor %}
+{% endblock %}
