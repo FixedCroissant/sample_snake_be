@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for mysite project.
 
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-fv#m!o*-h^25i)v*)duawam%-49l+^1@lin4vs&cf=v^^6m63u"
+SECRET_KEY = os.environ("DJANGO_SECRET","")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,7 +77,16 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}
+    "default": {"ENGINE": "django.db.backends.mysql",
+                'NAME': os.environ.get("DB_NAME", ""),
+                'USER': os.environ.get("DB_USER",""),
+                'PASSWORD':os.environ.get("DB_PASS",""),
+                'HOST': os.environ.get("DB_HOST","localhost"),
+                'PORT':os.environ.get("DB_POST","3306"),
+                'OPTIONS': {
+                    'sql_mode':'traditional'
+              },
+      }
 }
 
 
@@ -107,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = os.environ.get("STATIC_LOCATION","static/")
 
 #STATIC_ROOT = BASE_DIR / "static"
 
