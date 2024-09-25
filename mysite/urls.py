@@ -18,5 +18,7 @@ from django.urls import path, include
 
 
 urlpatterns = [path("admin/", admin.site.urls),
+#unless its not the admin site route, it's going to the blog.url list of URLs thats a part
+#of the "blog" app that's being picked up
 path("",include('blog.urls'))]
 
