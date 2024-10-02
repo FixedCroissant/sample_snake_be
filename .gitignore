@@ -56,3 +56,5 @@ docs/_build/
 /blog/__pycache_
 
 /mysite/static/admin/js/vendor
+
+.env

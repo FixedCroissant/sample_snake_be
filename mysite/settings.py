@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET","")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.pythonanywhere.com','.amazonaws.com','127.0.0.1']
+ALLOWED_HOSTS = ['.pythonanywhere.com','.amazonaws.com','127.0.0.1','localhost']
 
 
 # Application definition
@@ -120,7 +120,8 @@ USE_TZ = True
 
 STATIC_URL = os.environ.get("STATIC_LOCATION","static/")
 
-#STATIC_ROOT = BASE_DIR / "static"
+#needs to have this properly set to work.
+STATIC_ROOT = BASE_DIR / "static"
 
 #STATIC_ROOT = "/home/JJWilliams2017/website/mysite/static/"
 
@@ -131,3 +132,12 @@ STATIC_URL = os.environ.get("STATIC_LOCATION","static/")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#DOCKER-CONTAINER
+EMAIL_HOST = 'your-host-here'
+EMAIL_PORT = 1025
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = 'test@test.dev'
+#NOT NEEDED FOR THE CONTAINER
+#EMAIL_HOST_PASSWORD = 'testy-mc-test'
