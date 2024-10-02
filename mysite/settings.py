@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 
 """
 Django settings for mysite project.
@@ -28,6 +29,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET","")
 DEBUG = True
 
 ALLOWED_HOSTS = ['.pythonanywhere.com','.amazonaws.com','127.0.0.1','localhost']
+
+load_dotenv()
 
 
 # Application definition
